@@ -1,10 +1,381 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Unfinished Dreams</title>
-  </head>
-  <body>
-    <h1>Welcome to UnfinishedDreams.blog</h1>
-    <p>This site honors legacy, memory, and service through storytelling and action.</p>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Unfinished Dreams — Ben Linkous</title>
+<meta name="description" content="A collection of stories about legacy, memory, and the dreams that go unfinished when people leave too soon. By Ben Linkous." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --paper:#faf7f2;
+  --paper2:#f3ede3;
+  --paper3:#ece4d6;
+  --ink:#1c1714;
+  --ink2:#2a2420;
+  --muted:#7a6e62;
+  --faint:#b8ad9e;
+  --rule:#d9cfc2;
+  --rust:#8b3a1a;
+  --rust2:#a04520;
+  --gold:#8b6914;
+  --serif:'Playfair Display',Georgia,serif;
+  --body:'Lora',Georgia,serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.8;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+
+/* ── HEADER ── */
+.site-header{
+  border-bottom:1px solid var(--rule);
+  padding:1.5rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--paper);
+}
+.header-brand{
+  font-family:var(--serif);font-style:italic;
+  font-size:1.4rem;font-weight:400;color:var(--ink);
+  letter-spacing:0.01em;
+}
+.header-nav{display:flex;gap:2rem;list-style:none;}
+.header-nav a{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--muted);transition:color 0.2s;
+}
+.header-nav a:hover{color:var(--ink);}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--muted);}
+
+@media(max-width:680px){
+  .site-header{padding:1.25rem 1.5rem;}
+  .nav-toggle{display:block;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;}
+  .header-nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:1rem 1.5rem;z-index:100;}
+  .header-nav.open{display:flex;}
+  .header-nav li{padding:0.5rem 0;border-bottom:1px solid var(--rule);}
+  .header-nav li:last-child{border-bottom:none;}
+}
+
+/* ── MASTHEAD ── */
+.masthead{
+  text-align:center;
+  padding:4rem 2.5rem 3rem;
+  border-bottom:3px double var(--rule);
+  position:relative;
+}
+.masthead::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:repeating-linear-gradient(90deg,var(--rule) 0px,var(--rule) 6px,transparent 6px,transparent 12px);
+}
+.masthead-label{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:1.25rem;
+}
+.masthead h1{
+  font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);
+  font-weight:900;font-style:italic;letter-spacing:-0.01em;
+  color:var(--ink);line-height:1.05;margin-bottom:0.75rem;
+}
+.masthead-rule{
+  width:60px;height:1px;background:var(--rust);
+  margin:1.25rem auto;
+}
+.masthead-sub{
+  font-family:var(--body);font-style:italic;font-size:1.05rem;
+  color:var(--muted);max-width:480px;margin:0 auto;line-height:1.75;
+}
+
+/* ── LEAD POST ── */
+.lead-post{
+  max-width:760px;margin:0 auto;
+  padding:4rem 2.5rem;
+  border-bottom:1px solid var(--rule);
+}
+.post-kicker{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--rust);margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.post-kicker::before{content:'';width:20px;height:1px;background:var(--rust);}
+.post-title{
+  font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:700;line-height:1.15;color:var(--ink);
+  margin-bottom:0.75rem;letter-spacing:-0.01em;
+}
+.post-date{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:2rem;
+}
+
+/* Photo */
+.post-photo{
+  margin:0 -2.5rem 2.5rem;
+  position:relative;overflow:hidden;
+}
+.post-photo img{
+  width:100%;height:420px;object-fit:cover;object-position:top center;
+  display:block;filter:sepia(15%) contrast(1.05);
+}
+.post-photo-caption{
+  background:var(--ink);color:rgba(255,255,255,0.7);
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.15em;
+  text-transform:uppercase;padding:0.5rem 1rem;
+  position:absolute;bottom:0;left:0;right:0;
+}
+
+/* Post body */
+.post-body p{
+  font-size:1.05rem;line-height:1.9;color:var(--ink2);
+  margin-bottom:1.4rem;
+}
+.post-body p:first-child::first-letter{
+  font-family:var(--serif);font-size:4rem;font-weight:900;
+  float:left;line-height:0.75;margin:0.15rem 0.12rem 0 0;
+  color:var(--rust);
+}
+.post-body p strong{color:var(--ink);font-weight:600;}
+.post-body .post-close{
+  margin-top:2rem;padding-top:2rem;
+  border-top:1px solid var(--rule);
+  font-family:var(--serif);font-style:italic;
+  font-size:1.1rem;color:var(--muted);text-align:right;
+}
+
+/* ── ABOUT THIS PROJECT ── */
+.about-section{
+  background:var(--paper2);
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:4rem 2.5rem;
+}
+.about-inner{max-width:760px;margin:0 auto;}
+.section-label{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--rust);margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.section-label::before{content:'';width:20px;height:1px;background:var(--rust);}
+.about-title{
+  font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:700;color:var(--ink);margin-bottom:1.5rem;
+  line-height:1.2;
+}
+.about-body p{
+  font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:1rem;
+}
+.about-body p strong{color:var(--ink);}
+
+/* The people */
+.people-section{
+  max-width:760px;margin:0 auto;
+  padding:4rem 2.5rem;
+  border-bottom:3px double var(--rule);
+}
+.people-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:2rem;margin-top:2rem;
+}
+.person-card{
+  border-left:2px solid var(--rust);
+  padding-left:1.25rem;
+}
+.person-name{
+  font-family:var(--serif);font-size:1.1rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.25rem;
+}
+.person-relation{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:0.4rem;
+}
+.person-note{font-size:0.88rem;color:var(--muted);line-height:1.6;font-style:italic;}
+
+/* ── MORE COMING ── */
+.coming-section{
+  text-align:center;padding:4rem 2.5rem;
+  background:var(--paper);
+}
+.coming-inner{max-width:560px;margin:0 auto;}
+.coming-section h2{
+  font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:700;font-style:italic;color:var(--ink);
+  margin-bottom:0.75rem;
+}
+.coming-section p{
+  font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;
+}
+.coming-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.coming-link{
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--rust);
+  border-bottom:1px solid var(--rule);padding-bottom:0.15rem;
+  transition:border-color 0.2s;
+}
+.coming-link:hover{border-color:var(--rust);}
+
+/* ── FOOTER ── */
+footer{
+  border-top:3px double var(--rule);
+  padding:2rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;background:var(--paper2);
+}
+.footer-brand{
+  font-family:var(--serif);font-style:italic;
+  font-size:1rem;color:var(--muted);
+}
+.footer-copy{
+  font-family:var(--mono);font-size:0.52rem;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--faint);
+}
+
+@media(max-width:680px){
+  .masthead{padding:3rem 1.5rem 2.5rem;}
+  .lead-post,.about-section,.people-section,.coming-section{padding:2.5rem 1.5rem;}
+  .post-photo{margin:0 -1.5rem 2rem;}
+  .post-photo img{height:280px;}
+  .people-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" style="position:relative;">
+  <div class="header-brand">Unfinished Dreams</div>
+  <button class="nav-toggle" id="navToggle">Menu</button>
+  <ul class="header-nav" id="headerNav">
+    <li><a href="#post">The First Entry</a></li>
+    <li><a href="#about">About This Project</a></li>
+    <li><a href="#people">Those We Carry</a></li>
+    <li><a href="https://benlinkous.com" target="_blank" rel="noopener">BenLinkous.com</a></li>
+  </ul>
+</header>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-label">A Blog · A Diary · Perhaps a Book</div>
+  <h1>Unfinished Dreams</h1>
+  <div class="masthead-rule"></div>
+  <p class="masthead-sub">Stories about legacy, memory, and the dreams that go unfinished when people leave too soon — and what it means to carry them forward.</p>
+</div>
+
+<!-- LEAD POST -->
+<article class="lead-post" id="post">
+  <div class="post-kicker">First Entry · Personal Essay</div>
+  <h2 class="post-title">The Day I Understood What Unfinished Means</h2>
+  <div class="post-date">Written by Ben Linkous · 2024</div>
+
+  <div class="post-photo">
+    <img src="dad-and-me.jpg" alt="Ben Linkous and his father" />
+    <div class="post-photo-caption">Ben Linkous and his father · Legacy Alive</div>
+  </div>
+
+  <div class="post-body">
+    <p>On September 24, 2024 my father went in for a routine surgery. He had many major surgeries before this so we really didn't get too concerned. The actual surgery was without complications but his recovery was anything but normal and we almost lost him.</p>
+
+    <p>After being discharged the day after surgery he went home and his food wasn't processing right. We talked to the surgeon and they said to bring him back to the Baptist Hospital in Winston-Salem to get checked out. They admitted him — but this happened to be the same night Hurricane Helene came through Asheville.</p>
+
+    <p>For the next few days the hospital mainly monitored but he did not eat and things weren't right. He went back into surgery on Tuesday, which was one week later. They continued to monitor him but they were unable to give him as much IV fluids as they normally would. This had a major impact on his kidneys — but we didn't know it yet.</p>
+
+    <p>On Friday, even though he really hadn't improved much, a resident spoke to me in the hall. He said that they believe he should recover at home. For <em>"elderly"</em> men — Dad turned 72 last year — it was important that he return home so his confusion wouldn't get worse. This hit me like a ton of bricks. <strong>My Dad is not an elderly man.</strong> He is a vibrant, energetic man that has many years left with me. At least I thought.</p>
+
+    <p>The next few days would prove to bring him to his most fragile state. Hurricane Helene made it necessary for the hospital to ration IVs. Dad didn't get the same amount as he normally would and his labs concerning kidney function continued to go down. He was a hard "stick" and they neglected to get a lab one day — and the next day it was critically low. He had renal failure, and the only question was whether it would be short or long term.</p>
+
+    <p>I worked in dialysis, and to think that my Dad had gone from a healthy, energetic man to a fragile, confused potential dialysis patient in just over a week — that rocked me.</p>
+
+    <p>It was at this time I thought about my legacy, coupled with his and my mother's. I thought about how sometimes we lose our loved ones who still have dreams — but those go unfulfilled due to tragedy. It became my passion to carry on the legacy of not only my mother and father, but also my Paw Paw Millard Spence, a man I never met named "Red" Linkous who played bluegrass, and my father-in-law Ralph Jones who loved to fish — all of whom have left us way too soon.</p>
+
+    <p>This is called Unfinished Dreams. Whether it is just my personal passion or something bigger, I do not yet know.</p>
+
+    <div class="post-close">
+      Dad is mended now. He is back to his energetic self — although slowing down just a bit. I can't look at him quite the same though. And honestly, that is a blessing.<br><br>
+      Love you, Dad.
+    </div>
+  </div>
+</article>
+
+<!-- ABOUT -->
+<div class="about-section" id="about">
+  <div class="about-inner">
+    <div class="section-label">About This Project</div>
+    <h2 class="about-title">What Unfinished Dreams Is</h2>
+    <div class="about-body">
+      <p>This started as a thought in a hospital hallway in Winston-Salem, North Carolina, in the fall of 2024. My father was fighting for his life — and I was standing there thinking about all the people I loved who had dreams that never got finished.</p>
+      <p>Some of those people are gone. Some are still here. All of them left — or are leaving — something behind that deserves to be carried forward. <strong>Unfinished Dreams is my attempt to carry it.</strong></p>
+      <p>This is a blog for now. It may become a diary. It may become a book someday. I don't know yet. What I know is that these stories need to be told — about bluegrass music and fishing and the way a father looks at his son — and this is where I'll tell them.</p>
+      <p>If it resonates with you, I'm glad. If it helps you think about your own unfinished dreams and the people who left them — even better. That's the whole point.</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE PEOPLE -->
+<div class="people-section" id="people">
+  <div class="section-label">Those We Carry</div>
+  <h2 class="about-title">The People Behind This</h2>
+  <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:0.5rem;">These are the people whose unfinished dreams I'm trying to honor. More stories about each of them will come.</p>
+  <div class="people-grid">
+    <div class="person-card">
+      <div class="person-name">My Father</div>
+      <div class="person-relation">Still Here · Still Writing His Story</div>
+      <div class="person-note">The man who nearly left us in September 2024 — and who made me understand what legacy really means. Vibrant, energetic, and not elderly in any sense of the word.</div>
+    </div>
+    <div class="person-card">
+      <div class="person-name">My Mother</div>
+      <div class="person-relation">Legacy Carrier</div>
+      <div class="person-note">Part of the legacy that shapes everything I do and everything I'm trying to carry forward.</div>
+    </div>
+    <div class="person-card">
+      <div class="person-name">Millard "Paw Paw" Spence</div>
+      <div class="person-relation">Grandfather · Gone Too Soon</div>
+      <div class="person-note">A man I never got to meet — but whose presence I feel in the stories that have been passed down. One of the original unfinished dreams.</div>
+    </div>
+    <div class="person-card">
+      <div class="person-name">"Red" Linkous</div>
+      <div class="person-relation">Bluegrass · Gone Too Soon</div>
+      <div class="person-note">A man who played bluegrass — and left before I could know him. His music is somewhere in the family line, waiting to be remembered properly.</div>
+    </div>
+    <div class="person-card">
+      <div class="person-name">Ralph Jones</div>
+      <div class="person-relation">Father-in-Law · Gone Too Soon</div>
+      <div class="person-note">A man who loved to fish — and who left too early. His quiet joy on the water is the kind of thing that deserves a story.</div>
+    </div>
+    <div class="person-card" style="border-left-color:var(--faint);">
+      <div class="person-name">More to Come</div>
+      <div class="person-relation">The Stories Still Being Written</div>
+      <div class="person-note">This list will grow. Every family has people whose dreams went unfinished. These are mine — and eventually, maybe, yours too.</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMING -->
+<div class="coming-section">
+  <div class="coming-inner">
+    <h2>More entries are coming.</h2>
+    <p>This is just the beginning. The stories about Paw Paw, about Red's bluegrass, about Ralph on the water — they're all waiting to be written. Subscribe to the Substack to get them when they arrive.</p>
+    <div class="coming-links">
+      <a href="https://substack.com/@callmelink" target="_blank" rel="noopener" class="coming-link">Subscribe on Substack</a>
+      <a href="https://benlinkous.com" target="_blank" rel="noopener" class="coming-link">About the Author</a>
+      <a href="mailto:callmelink@benlinkous.com" class="coming-link">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Unfinished Dreams · Ben Linkous</div>
+  <div class="footer-copy">© <span id="yr"></span> · Pulaski, Virginia · Written with love</div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('navToggle').addEventListener('click',function(){
+  const n = document.getElementById('headerNav');
+  n.classList.toggle('open');
+  this.textContent = n.classList.contains('open') ? 'Close' : 'Menu';
+});
+</script>
+</body>
 </html>
